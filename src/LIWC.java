@@ -14,7 +14,7 @@ public class LIWC {
 		// TODO Auto-generated method stub
 		
 		double [][] liwc_features = new double[dimension][LIWC_DIMENSION];
-		String temp="DataSet/LIWC/";
+		String temp="data/LIWC/";
 		String temp1,temp2,file_dire;
 		int count=0;
 		

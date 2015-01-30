@@ -1,7 +1,3 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-
 public class Main {
 
 	public static void main(String[] args) throws Exception {
@@ -11,7 +7,7 @@ public class Main {
 
 		NGRAM ngram = new NGRAM();
 		
-		for(i=0;i<5;i++) { /*nested 5-fold CV*/
+		for(i=0; i<5; i++) {
 			
 			System.out.println((i+1) + " th FOLD IS A TEST SET");
 			
@@ -20,22 +16,22 @@ public class Main {
 			
 			System.out.println("NGRAM FEATURES...OK");
 	
-			
-			LIWC liwc = new LIWC();
-			
-			double[][] test_liwc_features = liwc.feature(i,1,test_ngram_features.length);
-			double[][] train_liwc_features = liwc.feature(i,0,train_ngram_features.length);
-
-			System.out.println("LIWC FEATURES..OK");
-			
-			COMBINE combine = new COMBINE();
-			double[][] train_features = combine.sum(train_liwc_features,train_ngram_features);
-			double[][] test_features = combine.sum(test_liwc_features,test_ngram_features);
-			
-			System.out.println("COMBINE...OK");
+//			
+//			LIWC liwc = new LIWC();
+//			
+//			double[][] test_liwc_features = liwc.feature(i,1,test_ngram_features.length);
+//			double[][] train_liwc_features = liwc.feature(i,0,train_ngram_features.length);
+//
+//			System.out.println("LIWC FEATURES..OK");
+//			
+//			COMBINE combine = new COMBINE();
+//			double[][] train_features = combine.sum(train_liwc_features,train_ngram_features);
+//			double[][] test_features = combine.sum(test_liwc_features,test_ngram_features);
+//			
+//			System.out.println("COMBINE...OK");
 		
 			SVMLIGHT svmlight = new SVMLIGHT();
-			preci_recall[i]=svmlight.calcc(train_features, test_features);
+			preci_recall[i]=svmlight.calcc(train_ngram_features, test_ngram_features);
 
 		}
 		
